@@ -7,46 +7,24 @@ class Generator {
 		$svg = '';
 		$squares = array();
 		for($stage=1; $stage<=$stages; $stage++){
-		  for($gridno =1; $gridno <= 9; $gridno ++){
-		  	//coord modification
-		  	$cmod = array(/* x, y */);
-		  	switch($gridno){
-		  		case 1:
-		  			$cmod = array(0,1);
-		  		case 2:
-		  			$cmod = array(0,1);
-		  		case 3:
-		  			$cmod = array(0,1);
-		  		case 4:
-		  			$cmod = array(1,0);
-		  		case 5:
-		  			$cmod = array(1,1);
-		  		case 6:
-		  			$cmod = array(1,2);
-		  		case 7:
-		  			$cmod = array(2,0);
-		  		case 8:
-		  			$cmod = array(2,1);
-		  		case 9:
-		  			$cmod = array(2,2);
-		  	}
+		  $stage_exp = pow(3, $stage);
+		  $s_x = $c_w / $stage_exp; //square width;
+		  $s_y = $c_h / $stage_exp; //square height;
+		  for($gridno = 1; $gridno <= 9; $gridno ++){
 		  	
-		  	$s_x = $c_w/3^$stage; //square width;
-		  	$s_y = $c_h/3^$stage; //square height;
-		  	
-			$square['x1'] = $s_x*$cmod[0];
-			$square['y1'] = $s_y*$cmod[1];
-			$square['x2'] = $square['y1'] + $s_x;
-			$square['y2'] = $square['y1'] + $s_y;
-			$square['w'] = $s_x;
-			$square['h'] = $s_y;
-			$squares[$stage][$gridno] = $square;
+				if($gridno == 5){
+			  		$square['x'] = $s_x;
+			  		$square['y'] = $s_y;
+			  		$square['w'] = $s_x;
+			  		$square['h'] = $s_y;
+			  		$squares[$stage][$gridno] = $square;
+				}			
 		  }
 		}
 		foreach($squares as $gridno=>$grid){
 		  foreach($grid as $squareno =>$square){
-			$x = $square['x1'];
-			$y = $square['y1'];
+			$x = $square['x'];
+			$y = $square['y'];
 			$w = $square['w'];
 			$h = $square['h'];
 			if($square['h'] * $square['h'] == 0){
@@ -58,7 +36,6 @@ class Generator {
 			}
 		  }
 		}
-		print_r("Debug: " . print_r($squares, 1) . "\n");
 		return($svg);
 }
 }
