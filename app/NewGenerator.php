@@ -8,6 +8,20 @@ class NewGenerator {
 	private $stages = 5;
 	private $canvas_size = 180;
 
+	public static function startTimetracking(){
+		$t_exp = explode(" ", microtime());
+		$start_time = $t_exp[1] + $t_exp[0];
+		return $start_time;
+	}
+	
+	public static function stopTimetracking($start_time){
+		$t_exp = explode(" ", microtime());
+		$stop_time = $t_exp[1] + $t_exp[0];
+		$time_diff = $stop_time - $start_time;
+		$t_format = sprintf("%f", $time_diff);
+		return $t_format;
+	}
+	
 	/**
 	 * @param Array $args Should contain the keys 'canvas_size' and 'stages' (default: 5)
 	 */
@@ -67,7 +81,7 @@ class NewGenerator {
 	private function generateSVG($carpet){
 		$svg = '';
 		$ca = $carpet;
-		foreach($ca as $ca_stage){
+		foreach($ca as $stageno=>$ca_stage){
 		  //per stage
 		  foreach($ca_stage as $sq_array){
 		  	//per square in stage
@@ -75,7 +89,7 @@ class NewGenerator {
 		  	(float) $x = $sq_array['x']; //first x-coordinate of square
 		  	(float) $y = $sq_array['y']; //first y-coordinate of square
 		  	(float) $s = $sq_array['s']; //square size
-		  	$svg .= "\n<rect x=\"$x\" y=\"$y\" width=\"$s\" height=\"$s\" />";
+		  	$svg .= "\n<rect x=\"$x\" y=\"$y\" width=\"$s\" height=\"$s\" /><!-- stage $stageno -->";
 		  }	
 		}
 		return($svg);
@@ -89,7 +103,7 @@ class NewGenerator {
 		$svg = $this->generateSVG($carpet);
 		return($svg);
 	}
-
+	
 }
 
 ?>

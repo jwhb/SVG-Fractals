@@ -1,7 +1,6 @@
 <?php
-	/*TODO: */ require_once("Generator.php");
 	require_once("NewGenerator.php");
-	$start_time = Generator::startTimetracking();
+	$start_time = NewGenerator::startTimetracking();
 	header("Content-type: image/svg+xml");
 	echo('<?xml version="1.0" encoding="iso-8859-1"?>');
 	
