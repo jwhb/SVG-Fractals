@@ -7,10 +7,15 @@
 		require_once('Generator.php');
 	 	$start_time = Generator::startTimetracking();
 	 	
-	 	if(isset($_GET['size'])){
+	 	if(isset($_GET['size'])){//Render size
 	 		$canvas_size = $_GET['size'];
 	 	}else{
 	 		$canvas_size = 180;
+	 	}
+	 	if(isset($_GET['dsize'])){//Display size (of img-tag, will scale)
+	 		$canvas_dsize = $_GET['dsize'];
+	 	}else{
+	 		$canvas_dsize = 180;
 	 	}
 	?>
 </head>
@@ -26,10 +31,21 @@
 		?>
 		<object data="carpet.svg.php?stages=3" type="image/svg+xml" 
 		height="<?=$canvas_size?>" width="<?=$canvas_size?>" style="border: 1px red solid;"></object>
+	
+		<form>
+		<div>
+		  <p>Render width/height: <input type="text" name="newRenderSize" value="<?=$canvas_size?>" size="5" /><br />
+		  Display width/height: <input type="text" name="newRenderSize" value="<?=$canvas_size?>" size="5" /></p>
+		</div>
+		<div style="float: right;">
+		  <input type="submit" />
+		</div>
+		</form>
+	
 	</div>
 	<p><?php echo("<i>Executed in " . Generator::stopTimetracking($start_time) . " seconds.</i>");?></p>
+	
 	<p>To display the generated SVG image, you have to use at least IE9, Mozilla Firefox 4.0 or Chrome 
 	4.0. The <a href="http://www.adobe.com/svg/viewer/install/">Adobe SVG Viewer</a> may help</p>
-	
 </body>
 </html>
