@@ -3,7 +3,7 @@
 /**
  * @author Jasper Wiegratz
  */
-class NewGenerator {
+class CarpetGenerator {
 	
 	private $stages = 5;
 	private $canvas_size = 180;

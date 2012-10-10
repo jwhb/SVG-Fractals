@@ -1,6 +1,6 @@
 <?php
-	require_once("NewGenerator.php");
-	$start_time = NewGenerator::startTimetracking();
+	require_once("CarpetGenerator.php");
+	$start_time = CarpetGenerator::startTimetracking();
 	header("Content-type: image/svg+xml");
 	echo('<?xml version="1.0" encoding="iso-8859-1"?>');
 	
@@ -16,7 +16,7 @@
   <?php if(!isset($_GET['stages'])){?>
 	<text x="3" y="18">Not enough parameters given!</text><?php
   }else{
-  	$svg_gen = new NewGenerator(array(
+  	$svg_gen = new CarpetGenerator(array(
   		'stages' => $_GET['stages'], 
   		'canvas_size' => $canvas_size, 
   	));

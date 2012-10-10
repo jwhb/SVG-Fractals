@@ -4,8 +4,8 @@
 <head>
 	<title>SVG-Fractals (Author: Jasper Wiegratz)</title>
 	<?php 
-		require_once('NewGenerator.php');
-	 	$start_time = NewGenerator::startTimetracking();
+		require_once('CarpetGenerator.php');
+	 	$start_time = CarpetGenerator::startTimetracking();
 	 	
 	 	$canvas_size = 180;
 	 	$canvas_dsize = 180;
@@ -52,5 +52,6 @@
 	<p>To display the generated SVG image, you have to use at least IE9, Mozilla Firefox 4.0 or Chrome 
 	4.0. The <a href="http://www.adobe.com/svg/viewer/install/">Adobe SVG Viewer</a> may help.</p>
 	</div>
+</div>
 </body>
 </html>
