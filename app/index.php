@@ -21,6 +21,32 @@
 	 		$stages = $_GET['stages'];
 	 	}
 	?>
+	<link href='http://fonts.googleapis.com/css?family=Inder+Web:600' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+		body{
+			font-family: 'Inder', sans-serif;
+		}
+		input{
+			text-align: center;
+			color: #787878;
+			padding: 1px 5px;
+			letter-spacing: -0.02em;
+			text-shadow: 0px 1px 0px #fff;
+			outline: none;
+			background: -webkit-gradient(linear, left top, left bottom, from(#e0e0e0), to(#ffffff));
+			background: -moz-linear-gradient(top,  #e0e0e0,  #ffffff);
+			-webkit-border-radius: 2px;
+			-moz-border-radius: 2px;
+			border-radius: 2px;
+			border: 1px solid #717171;
+			-webkit-box-shadow: 1px 1px 0px #efefef;
+			-moz-box-shadow: 1px 1px 0px #efefef;
+			box-shadow:  1px 1px 0px #efefef;
+		}
+		input[type=submit] { font-size: 1.1em; letter-spacing: -0.05em; color: #444; }
+		input:focus { -webkit-box-shadow: 0px 0px 5px #007eff; -moz-box-shadow: 0px 0px 5px #007eff; box-shadow: 0px 0px 5px #007eff; }
+				
+	</style>
 </head>
 <body><div>
 	<p align="center">
@@ -41,9 +67,9 @@
 			<?php } ?>
 		<form method="get">
 		<div>
-		  <p>Stages: <input type="text" name="stages" value="<?=$stages?>" size="5" /><br />
-		  Render width/height: <input type="text" name="size" value="<?=$canvas_size?>" size="5" /><br />
-		  Display width/height: <input type="text" name="dsize" value="<?=$canvas_dsize?>" size="5" /><br />
+		  <p>Stages: <input type="text" name="stages" value="<?=$stages?>" size="3" /><br />
+		  Render width/height: <input type="text" name="size" value="<?=$canvas_size?>" size="3" /><br />
+		  Display width/height: <input type="text" name="dsize" value="<?=$canvas_dsize?>" size="3" /><br />
 		  <input type="submit" />
 		  </p>
 		</div>
