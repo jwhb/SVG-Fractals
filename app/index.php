@@ -62,7 +62,7 @@
 				<object data="carpet.svg.php?stages=<?=$stages?>" type="image/svg+xml" 
 				height="<?=$canvas_dsize?>" width="<?=$canvas_dsize?>" style="border: 1px red solid;"></object>
 			<?php }else{ ?>
-				<img src="carpet.svg.php?stages=<?=$stages?>" height="<?=$canvas_dsize?>"
+				<img src="carpet.svg.php?stages=<?=$stages?>&size=<?=$canvas_size?>&dsize=<?=$canvas_dsize?>" height="<?=$canvas_dsize?>"
 				width="<?=$canvas_dsize?>" style="border: 1px red solid;"/>
 			<?php } ?>
 		<form method="get">

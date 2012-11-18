@@ -5,10 +5,15 @@
 	echo('<?xml version="1.0" encoding="iso-8859-1"?>');
 	
 	
-	if(isset($_GET['height'])){
+	if(isset($_GET['size'])){
 		$canvas_size = $_GET['size'];
 	}else{
 		$canvas_size = 180;
+	}
+	if(isset($_GET['dsize'])){
+		$canvas_dsize = $_GET['dsize'];
+	}else{
+		$canvas_dsize = 180;
 	}
 ?>
 
@@ -19,6 +24,7 @@
   	$svg_gen = new CarpetGenerator(array(
   		'stages' => $_GET['stages'], 
   		'canvas_size' => $canvas_size, 
+  		'canvas_dsize' => $canvas_dsize, 
   	));
   	echo $svg_gen->generateCarpetSVG();
   }
