@@ -5,10 +5,14 @@
  */
 class CarpetGenerator {
 	
-  //Defining standard parameters
-	private $stages = 5;
-	private $canvas_size = 180;
-	private $canvas_dsize = 180;
+  //Defining default parameters
+	public static $def_stages = 5;
+	public static $def_canvas_size = 180;
+	public static $def_canvas_dsize = 180;
+	
+	private $stages;
+	private $canvas_size;
+	private $canvas_dsize;
 
 	public static function startTimetracking(){
 		$t_exp = explode(" ", microtime());
@@ -30,33 +34,17 @@ class CarpetGenerator {
    *        stages: Amount of refinements
 	 */
 	public function __construct($args) {
-		if(isset($args['stages'])) $this->stages = $args['stages'];
+		require_once('CarpetUtils.php');
+		
+		if(isset($args['stages'])){
+			$this->stages = $args['stages'];
+		}else{
+			$this->stages = $this->def_canvas_size;
+		}
 		$this->canvas_size = $args['canvas_size'];
 		$this->canvas_dsize = $args['canvas_dsize'];
 	}
 
-	/**
-	 * @param int $stage Stage (of refinement)
-	 * @param int $canvas_size Size of the (SVG) canvas
-	 * @return int Side length of square of given stage
-	 */
-	private function getSquareSidelength($stage, $canvas_size){
-		//<size> / 3^<stage>
-		//pow(number $base, number $exp ) = $base^$exp
-		return($canvas_size/pow(3, $stage));
-	}
-	
-	/**
-	 * @param int $stage Stage (of refinement)
-	 * @param int $canvas_size Size of the (SVG) canvas
-	 * @param int $n $n-th element in one row
-	 * @return int Coordinate (one dimension) of n-th square of given stage
-	 */
-	private function getSquarePosition($stage, $canvas_size, $n){
-		$sq_a = $this->getSquareSidelength($stage, $canvas_size);
-		return($sq_a + 3*($n-1)*$sq_a);
-	}
-	
 	/**
 	 * @return Array with $ret[$stage][$square]
 	 */
@@ -67,7 +55,7 @@ class CarpetGenerator {
 		for($stage = 1; $stage <= $this->stages; $stage++){
 		  //Executed per stage
 		  //sq_a: square sidelength
-		  $sq_a = $this->getSquareSidelength($stage, $cs);
+		  $sq_a = CarpetUtils::getSquareSidelength($stage, $cs);
 		  
 		  $sq_per_row = pow(3, $stage-1);
 		  $sq_total = $sq_per_row * $sq_per_row;
@@ -78,9 +66,9 @@ class CarpetGenerator {
         for($y_row = 1; $y_row <= $sq_per_row; $y_row++){
           //Executed per y-row on x-row => x/y coordinate
           $carpet[$stage][] = array(
-          'x' => $this->getSquarePosition($stage, $cs, $y_row),
-          'y' => $this->getSquarePosition($stage, $cs, $x_row),
-          's' => $this->getSquareSidelength($stage, $cs)
+          'x' => CarpetUtils::getSquarePosition($stage, $cs, $y_row),
+          'y' => CarpetUtils::getSquarePosition($stage, $cs, $x_row),
+          's' => CarpetUtils::getSquareSidelength($stage, $cs)
           );
         }
 		  }
