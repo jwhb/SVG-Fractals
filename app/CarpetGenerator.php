@@ -1,8 +1,5 @@
 <?php
 
-/**
- * @author Jasper Wiegratz
- */
 class CarpetGenerator {
 	
   //Defining default parameters
