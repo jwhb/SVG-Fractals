@@ -79,7 +79,7 @@
   <div>
 	<p align="center">
 		<span style="font-size: 2.5em;">SVG Fractals</span><br>
-		<span style="font-size: 1.2em;">Author: Jasper Wiegratz</span>
+		<span style="font-size: 1.2em;">Author: JWhy</span>
 	</p>
 	<div style="margin: 0px auto;" align="center">
 		<?php 			
