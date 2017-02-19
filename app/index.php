@@ -2,7 +2,7 @@
        "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>SVG-Fractals (Author: Jasper Wiegratz)</title>
+	<title>SVG-Fractals</title>
 	<?php 
 		require_once('CarpetGenerator.php');
 		require_once('CarpetUtils.php');
